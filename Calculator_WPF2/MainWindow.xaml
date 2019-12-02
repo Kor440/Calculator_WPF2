@@ -1,0 +1,126 @@
+﻿<Window x:Name="calcWindow" x:Class="Calculator_WPF2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Calculator_WPF2"
+        mc:Ignorable="d"
+        Title="Calculator" Width="390" Height="390" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Topmost="True">
+    
+        <Window.Resources>
+            <ResourceDictionary>
+                <LinearGradientBrush x:Key="ButtonBackground" StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#FFD9EDFF" Offset="0"/>
+                    <GradientStop Color="#FFC0DEFF" Offset="0.445"/>
+                    <GradientStop Color="#FFAFD1F8" Offset="0.53"/>
+                </LinearGradientBrush>
+                <Style TargetType="{x:Type Button}" x:Key="DefaultButtonStyle">
+                    <Setter Property="Background" Value="{StaticResource ButtonBackground}"/>
+                    <Setter Property="Margin" Value="2"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+            </ResourceDictionary>
+        </Window.Resources>
+    <Grid x:Name="Grid1" RenderTransformOrigin="0.5,0.5" Margin="2,-1,2,2" Cursor="Hand" >
+            <Grid.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.402"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Grid.RenderTransform>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="10"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="5"></ColumnDefinition>
+                <ColumnDefinition Width="70"/>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="10"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="0"></ColumnDefinition>
+                <ColumnDefinition Width="70"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Menu Grid.ColumnSpan="9" Margin="-5,0,-8,0">
+                <MenuItem Header="View" Height="24" Width="62" FontSize="16">
+                    <Button x:Name="normalCalcBut" Content="Normal" Click="normalCalcBut_Click"/>
+                    <Button x:Name="engeneeringCalcBut" Content="Engeneering" Click="engeneeringCalcBut_Click"/>
+                </MenuItem>
+            </Menu>
+
+            <TextBox Grid.Row="1" Name="textBoxSec" Grid.ColumnSpan="9" Text=""
+                 FontSize="32" TextAlignment="Left" IsReadOnly="True"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,2,0">
+            </TextBox>
+            <TextBox Grid.Row="2" Name="textBoxMain" Grid.ColumnSpan="9" Text="0"
+                 FontSize="32" TextAlignment="Right" IsReadOnly="True"
+                 HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="0,0,2,0">
+            </TextBox>
+
+            <Button x:Name="btn1" Grid.Row="4" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}" Click="btn1_Click">1</Button>
+            <Button x:Name="btn2" Grid.Row="4" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}" Click="btn2_Click">2</Button>
+            <Button x:Name="btn3" Grid.Row="4" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}" Click="btn3_Click">3</Button>
+            <Button x:Name="btn4" Grid.Row="5" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}" Click="btn4_Click">4</Button>
+            <Button x:Name="btn5" Grid.Row="5" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}" Click="btn5_Click">5</Button>
+            <Button x:Name="btn6" Grid.Row="5" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}" Click="btn6_Click">6</Button>
+            <Button x:Name="btn7" Grid.Row="6" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}" Click="btn7_Click">7</Button>
+            <Button x:Name="btn8" Grid.Row="6" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}" Click="btn8_Click">8</Button>
+            <Button x:Name="btn9" Grid.Row="6" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}" Click="btn9_Click">9</Button>
+            <Button x:Name="btn0" Grid.Row="7" Grid.Column="1" Style="{StaticResource DefaultButtonStyle}" Click="btn0_Click">0</Button>
+            <Button x:Name="btnDot" Grid.Row="7" Grid.Column="3" Style="{StaticResource DefaultButtonStyle}" Click="btnDot_Click" Margin="2,3,2,1" ToolTip="Point ">,</Button>
+
+        <Button x:Name="btnDelenie" Grid.Row="4" Grid.Column="5" Style="{StaticResource DefaultButtonStyle}" Click="btnDelenie_Click" ToolTip="Divide ">/</Button>
+            <Button x:Name="btnbtnUmnojenie" Grid.Row="5" Grid.Column="5" Style="{StaticResource DefaultButtonStyle}" Click="btnUmnojenie_Click" ToolTip="Multiply ">*</Button>
+            <Button x:Name="btnMinus" Grid.Row="6" Grid.Column="5" Style="{StaticResource DefaultButtonStyle}" Click="btnMinus_Click" ToolTip="Minus ">-</Button>
+            <Button x:Name="btnPlus" Grid.Row="7" Grid.Column="5" Style="{StaticResource DefaultButtonStyle}" Click="btnPlus_Click" ToolTip="Plus ">+</Button>
+        <Button x:Name="pow2But" Grid.Row="4" Grid.Column="6" Style="{StaticResource DefaultButtonStyle}" Click="pow2But_Click" ToolTip="Exponentiation"> 
+            <TextBlock FontFamily="Palatino Linotype" >
+         <Run>x</Run>
+         <Run Typography.Variants="Superscript">2</Run>
+            </TextBlock>
+        </Button>
+        <Button x:Name="powBut" Grid.Row="5" Grid.Column="6" Style="{StaticResource DefaultButtonStyle}" Click="powBut_Click" ToolTip="Determining the squared number">
+            <TextBlock FontFamily="Palatino Linotype" >
+         <Run>x</Run>
+         <Run Typography.Variants="Superscript">y</Run>
+            </TextBlock>
+        </Button>
+        <Button x:Name="sqrtBut" Grid.Row="6" Grid.Column="6" Style="{StaticResource DefaultButtonStyle}" Click="sqrtBut_Click" ToolTip="Square root extraction">√</Button>
+            <Button x:Name="absBut" Grid.Row="7" Grid.Column="6" Style="{StaticResource DefaultButtonStyle}" FontFamily="Palatino Linotype" 
+                    Click="absBut_Click" ToolTip="Inverse Calculation">abs</Button>
+        <Button x:Name="quadEquationBut" Grid.Row="4" Grid.Column="7" Style="{StaticResource DefaultButtonStyle}" FontFamily="Palatino Linotype" Click="x2_Click" ToolTip="Solv quadratic equation">
+            <TextBlock>
+            <Run>x</Run>
+            <Run Typography.Variants="Superscript">2</Run>
+            <Run>+</Run>
+            </TextBlock>
+        </Button>
+        <Button x:Name="sqrt3But" Grid.Row="6" Grid.Column="7" Style="{StaticResource DefaultButtonStyle}" FontFamily="Palatino Linotype"
+                Click="sqrt3But_Click" ToolTip="Cube root extraction">
+            <TextBlock>
+            <Run Typography.Variants="Superscript">3</Run>
+            <Run>√</Run>
+            <Run>x</Run>
+            </TextBlock>
+        </Button>
+        <Button Grid.Row="7" Grid.Column="7" Style="{StaticResource DefaultButtonStyle}" FontFamily="Palatino Linotype"
+                Click="factBut_Click">n!</Button>
+
+            <Button x:Name="btnChangeSign" Grid.Row="7" Grid.Column="2" Style="{StaticResource DefaultButtonStyle}" Click="btnChangeSign_Click" ToolTip="Change sign">+/-</Button>
+            <Button x:Name="btnRavno" Grid.Row="6" Grid.Column="8" Style="{StaticResource DefaultButtonStyle}" Grid.RowSpan="2" Click="btnRavno_Click" ToolTip="Equal">=</Button>
+            <Button x:Name="btnSbros" Grid.Row="4" Grid.Column="8" Style="{StaticResource DefaultButtonStyle}" Grid.RowSpan="2" Click="btnSbros_Click">C</Button>
+
+        </Grid>
+    </Window>
